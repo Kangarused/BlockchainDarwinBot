@@ -21,11 +21,9 @@ Typescript is being used for the source files which need to be generated into Ja
 2. Fill in required fields and submit
 3. Under the 'Bot' heading, select 'Create a Bot User'
 4. Copy the Token
-5. Open the application code and navigate to blockchain-darwin-bot > core > bootstrapper.tsc`
+5. Open the application code and navigate to blockchain-darwin-bot > core > bootstrapper.ts
 6. Add your token here `this.client.login("<TOKEN GOES HERE>");`
 7. Create your own discord server
 8. Go back to the discordapp bot page
 9. Click the 'Generate OAuth2 URL' 
 10. Add the bot to your new discord server
-
-
