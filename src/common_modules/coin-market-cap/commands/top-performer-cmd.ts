@@ -1,12 +1,12 @@
 import * as moment from 'moment';
 import * as CoinMarketCap from 'coinmarketcap-api';
 import { GuildMember, RichEmbed, Message } from "discord.js";
-import ColorUtils from "../../../utilities/color-utils";
 import ErrorCmd from './error-cmd';
 import Variables from '../core/variables';
 
 export default class TopPerformerCmd {
     public static defaultSearchNo: number = 100;
+    public static _gold = "#f7de40";
 
     public static getTopPerformer(
         message: Message, 
@@ -97,7 +97,7 @@ export default class TopPerformerCmd {
             price = Number(price.toFixed(2));
         }
 
-        embed.setColor(ColorUtils._gold);
+        embed.setColor(this._gold);
         embed.setTitle(`${emote} Winner is ${ticker.name} ${emote}`);
         embed.setDescription(
             "Symbol: " + ticker.symbol + "\n" +

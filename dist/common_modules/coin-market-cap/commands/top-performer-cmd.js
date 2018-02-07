@@ -3,7 +3,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const moment = require("moment");
 const CoinMarketCap = require("coinmarketcap-api");
 const discord_js_1 = require("discord.js");
-const color_utils_1 = require("../../../utilities/color-utils");
 const error_cmd_1 = require("./error-cmd");
 const variables_1 = require("../core/variables");
 class TopPerformerCmd {
@@ -92,7 +91,7 @@ class TopPerformerCmd {
         if (price >= 0.01) {
             price = Number(price.toFixed(2));
         }
-        embed.setColor(color_utils_1.default._gold);
+        embed.setColor(this._gold);
         embed.setTitle(`${emote} Winner is ${ticker.name} ${emote}`);
         embed.setDescription("Symbol: " + ticker.symbol + "\n" +
             "Rank: " + ticker.rank + "\n" +
@@ -105,5 +104,6 @@ class TopPerformerCmd {
     }
 }
 TopPerformerCmd.defaultSearchNo = 100;
+TopPerformerCmd._gold = "#f7de40";
 exports.default = TopPerformerCmd;
 //# sourceMappingURL=top-performer-cmd.js.map

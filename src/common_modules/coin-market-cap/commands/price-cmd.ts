@@ -1,12 +1,14 @@
 import * as moment from 'moment';
 import * as CoinMarketCap from 'coinmarketcap-api';
 import { GuildMember, RichEmbed, Message } from "discord.js";
-import ColorUtils from "../../../utilities/color-utils";
 import ErrorCmd from './error-cmd';
 import Variables from '../core/variables';
 
 export default class PriceCmd {
     public static allowedCurrencies = ["AUD", "BRL", "CAD", "CHF", "CLP", "CNY", "CZK", "DKK", "EUR", "GBP", "HKD", "HUF", "IDR", "ILS", "INR", "JPY", "KRW", "MXN", "MYR", "NOK", "NZD", "PHP", "PKR", "PLN", "RUB", "SEK", "SGD", "THB", "TRY", "TWD", "ZAR"];
+    public static _red = "#ce1818";
+    public static _gray = "#a0a0a0";
+    public static _green = "#42f445";
 
     public static getCoinPrice(
         message: Message, 
@@ -59,13 +61,13 @@ export default class PriceCmd {
 
         // Set color based on 24hr percentage change
         if (change < 0) {
-            embed.setColor(ColorUtils._red);
+            embed.setColor(this._red);
             emote = ":fire:";
         } else if (change == 0) {
-            embed.setColor(ColorUtils._gray);
+            embed.setColor(this._gray);
             emote = ":wavy_dash:";
         } else { 
-            embed.setColor(ColorUtils._green);
+            embed.setColor(this._green);
             emote = ":money_with_wings:";
         }
 

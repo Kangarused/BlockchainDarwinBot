@@ -3,7 +3,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const moment = require("moment");
 const CoinMarketCap = require("coinmarketcap-api");
 const discord_js_1 = require("discord.js");
-const color_utils_1 = require("../../../utilities/color-utils");
 const error_cmd_1 = require("./error-cmd");
 const variables_1 = require("../core/variables");
 class PriceCmd {
@@ -52,15 +51,15 @@ class PriceCmd {
         }
         // Set color based on 24hr percentage change
         if (change < 0) {
-            embed.setColor(color_utils_1.default._red);
+            embed.setColor(this._red);
             emote = ":fire:";
         }
         else if (change == 0) {
-            embed.setColor(color_utils_1.default._gray);
+            embed.setColor(this._gray);
             emote = ":wavy_dash:";
         }
         else {
-            embed.setColor(color_utils_1.default._green);
+            embed.setColor(this._green);
             emote = ":money_with_wings:";
         }
         embed.setTitle(`${emote} ${ticker.name} Price ${emote}`);
@@ -75,5 +74,8 @@ class PriceCmd {
     }
 }
 PriceCmd.allowedCurrencies = ["AUD", "BRL", "CAD", "CHF", "CLP", "CNY", "CZK", "DKK", "EUR", "GBP", "HKD", "HUF", "IDR", "ILS", "INR", "JPY", "KRW", "MXN", "MYR", "NOK", "NZD", "PHP", "PKR", "PLN", "RUB", "SEK", "SGD", "THB", "TRY", "TWD", "ZAR"];
+PriceCmd._red = "#ce1818";
+PriceCmd._gray = "#a0a0a0";
+PriceCmd._green = "#42f445";
 exports.default = PriceCmd;
 //# sourceMappingURL=price-cmd.js.map

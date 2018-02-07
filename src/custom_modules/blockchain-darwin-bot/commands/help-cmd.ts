@@ -1,9 +1,10 @@
 import * as moment from 'moment';
 import { GuildMember, RichEmbed } from "discord.js";
-import ColorUtils from "../../../utilities/color-utils";
 import EventModel from '../../../classes/event-model';
 
 export default class HelpCmd {
+    public static _lightBlue = "#42a7f4";
+
     public static sendHelp(member: GuildMember, events: EventModel<any>[]) {
         member.createDM().then((channel) => {
             var content = `Hi ${member.displayName}, you requested some help!\n\n`;
@@ -13,7 +14,7 @@ export default class HelpCmd {
 
     public static GenerateHelpEmbed(events: EventModel<any>[]) {
         var embed = new RichEmbed();
-        embed.setColor(ColorUtils._lightBlue);
+        embed.setColor(this._lightBlue);
         embed.setTitle(":large_blue_diamond: Blockchain Darwin Bot Help Centre! :large_blue_diamond:");
         embed.setDescription(
             "See below for a list of commands that I will respond to! \n" +

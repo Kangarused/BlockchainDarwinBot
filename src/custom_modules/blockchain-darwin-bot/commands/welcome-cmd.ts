@@ -1,8 +1,9 @@
 import * as moment from 'moment';
 import { GuildMember, RichEmbed } from "discord.js";
-import ColorUtils from "../../../utilities/color-utils";
 
 export default class WelcomeCmd {
+    public static _green = "#42f445";
+
     public static sendWelcome(member: GuildMember) {
         member.createDM().then((channel) => {
             var content = `Hi ${member.displayName}, please read the information below!\n\n`;
@@ -12,7 +13,7 @@ export default class WelcomeCmd {
 
     public static GenerateWelcomeEmbed() {
         var embed = new RichEmbed();
-        embed.setColor(ColorUtils._green);
+        embed.setColor(this._green);
         embed.setTitle(":rocket: Welcome to Blockchain Darwin! :rocket:");
         embed.setDescription(
             "We are a small community of crypto-traders and enthusiasts \n\u200b\n");

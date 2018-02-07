@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const moment = require("moment");
 const discord_js_1 = require("discord.js");
-const color_utils_1 = require("../../../utilities/color-utils");
 class WelcomeCmd {
     static sendWelcome(member) {
         member.createDM().then((channel) => {
@@ -12,7 +11,7 @@ class WelcomeCmd {
     }
     static GenerateWelcomeEmbed() {
         var embed = new discord_js_1.RichEmbed();
-        embed.setColor(color_utils_1.default._green);
+        embed.setColor(this._green);
         embed.setTitle(":rocket: Welcome to Blockchain Darwin! :rocket:");
         embed.setDescription("We are a small community of crypto-traders and enthusiasts \n\u200b\n");
         embed.addField(":question: Got Questions?", "If you have any questions please check out our FAQ channel first! " +
@@ -25,5 +24,6 @@ class WelcomeCmd {
         return embed;
     }
 }
+WelcomeCmd._green = "#42f445";
 exports.default = WelcomeCmd;
 //# sourceMappingURL=welcome-cmd.js.map

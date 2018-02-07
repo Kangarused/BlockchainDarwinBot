@@ -1,12 +1,12 @@
 import * as moment from 'moment';
 import * as CoinMarketCap from 'coinmarketcap-api';
 import { GuildMember, RichEmbed, Message } from "discord.js";
-import ColorUtils from "../../../utilities/color-utils";
 import ErrorCmd from './error-cmd';
 import Variables from '../core/variables';
 
 export default class WorstPerformerCmd {
     public static defaultSearchNo: number = 100;
+    public static _brown = "#96592d";
 
     public static getWorstPerformer(
         message: Message, 
@@ -97,7 +97,7 @@ export default class WorstPerformerCmd {
             price = Number(price.toFixed(2));
         }
 
-        embed.setColor(ColorUtils._brown);
+        embed.setColor(this._brown);
         embed.setTitle(`${emote} Loser is ${ticker.name} ${emote}`);
         embed.setDescription(
             "Symbol: " + ticker.symbol + "\n" +

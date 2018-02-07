@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const moment = require("moment");
 const discord_js_1 = require("discord.js");
-const color_utils_1 = require("../../../utilities/color-utils");
 class HelpCmd {
     static sendHelp(member, events) {
         member.createDM().then((channel) => {
@@ -12,7 +11,7 @@ class HelpCmd {
     }
     static GenerateHelpEmbed(events) {
         var embed = new discord_js_1.RichEmbed();
-        embed.setColor(color_utils_1.default._lightBlue);
+        embed.setColor(this._lightBlue);
         embed.setTitle(":large_blue_diamond: Blockchain Darwin Bot Help Centre! :large_blue_diamond:");
         embed.setDescription("See below for a list of commands that I will respond to! \n" +
             "Just type the 'Trigger' in any channel that I have access to and I'll do the rest!\n\u200b\n" +
@@ -30,5 +29,6 @@ class HelpCmd {
         return embed;
     }
 }
+HelpCmd._lightBlue = "#42a7f4";
 exports.default = HelpCmd;
 //# sourceMappingURL=help-cmd.js.map

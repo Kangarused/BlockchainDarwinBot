@@ -3,7 +3,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const moment = require("moment");
 const CoinMarketCap = require("coinmarketcap-api");
 const discord_js_1 = require("discord.js");
-const color_utils_1 = require("../../../utilities/color-utils");
 const error_cmd_1 = require("./error-cmd");
 const variables_1 = require("../core/variables");
 class WorstPerformerCmd {
@@ -92,7 +91,7 @@ class WorstPerformerCmd {
         if (price >= 0.01) {
             price = Number(price.toFixed(2));
         }
-        embed.setColor(color_utils_1.default._brown);
+        embed.setColor(this._brown);
         embed.setTitle(`${emote} Loser is ${ticker.name} ${emote}`);
         embed.setDescription("Symbol: " + ticker.symbol + "\n" +
             "Rank: " + ticker.rank + "\n" +
@@ -105,5 +104,6 @@ class WorstPerformerCmd {
     }
 }
 WorstPerformerCmd.defaultSearchNo = 100;
+WorstPerformerCmd._brown = "#96592d";
 exports.default = WorstPerformerCmd;
 //# sourceMappingURL=worst-performer-cmd.js.map
