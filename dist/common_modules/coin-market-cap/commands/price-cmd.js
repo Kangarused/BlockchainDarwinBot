@@ -5,6 +5,7 @@ const CoinMarketCap = require("coinmarketcap-api");
 const discord_js_1 = require("discord.js");
 const color_utils_1 = require("../../../utilities/color-utils");
 const error_cmd_1 = require("./error-cmd");
+const variables_1 = require("../core/variables");
 class PriceCmd {
     static getCoinPrice(message, coin, convert) {
         var cmcClient = new CoinMarketCap();
@@ -22,8 +23,7 @@ class PriceCmd {
                     }
                     convertAdd = " in " + upperConvert;
                 }
-                var content = `Hi ${message.member.displayName}, you requested the ${ticker[0].name} price${convertAdd}!\n\n`;
-                message.channel.send(content, this.GeneratePriceEmbed(ticker[0], convert));
+                message.channel.sendEmbed(this.GeneratePriceEmbed(ticker[0], convert));
             }
             else {
                 error_cmd_1.default.announceError(message.channel, "Sorry, I wasn't able to find that coin :cry:");
@@ -68,7 +68,8 @@ class PriceCmd {
             "Rank: " + ticker.rank + "\n" +
             "Price: $" + price + " " + convert + "\n" +
             "Change: " + change + "%");
-        embed.setFooter("Prices sourced from Coin Market Cap");
+        embed.setURL(variables_1.default.coinUrl + ticker.id);
+        embed.setFooter("Source: Coin Market Cap");
         embed.setTimestamp(moment().toDate());
         return embed;
     }

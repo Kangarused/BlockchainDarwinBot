@@ -3,6 +3,7 @@ import * as CoinMarketCap from 'coinmarketcap-api';
 import { GuildMember, RichEmbed, Message } from "discord.js";
 import ColorUtils from "../../../utilities/color-utils";
 import ErrorCmd from './error-cmd';
+import Variables from '../core/variables';
 
 export default class PriceCmd {
     public static allowedCurrencies = ["AUD", "BRL", "CAD", "CHF", "CLP", "CNY", "CZK", "DKK", "EUR", "GBP", "HKD", "HUF", "IDR", "ILS", "INR", "JPY", "KRW", "MXN", "MYR", "NOK", "NZD", "PHP", "PKR", "PLN", "RUB", "SEK", "SGD", "THB", "TRY", "TWD", "ZAR"];
@@ -27,8 +28,7 @@ export default class PriceCmd {
                     }
                     convertAdd = " in " + upperConvert;
                 }
-                var content = `Hi ${message.member.displayName}, you requested the ${ticker[0].name} price${convertAdd}!\n\n`;
-                message.channel.send(content, this.GeneratePriceEmbed(ticker[0], convert));
+                message.channel.sendEmbed(this.GeneratePriceEmbed(ticker[0], convert));
             } else {
                 ErrorCmd.announceError(message.channel, "Sorry, I wasn't able to find that coin :cry:");
             }
@@ -76,8 +76,9 @@ export default class PriceCmd {
             "Price: $" + price + " " + convert + "\n" +
             "Change: " + change + "%"
         );
+        embed.setURL(Variables.coinUrl+ticker.id);
 
-        embed.setFooter("Prices sourced from Coin Market Cap");
+        embed.setFooter("Source: Coin Market Cap");
         embed.setTimestamp(moment().toDate());
 
         return embed;
